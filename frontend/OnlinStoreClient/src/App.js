@@ -15,9 +15,7 @@ function App() {
     try{
 
       const { data } = await axios.get("/api/products");
-
       setProducts(data);
-
     }
     catch(err)
     {

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://27b6-85-202-45-183.ngrok-free.app',
-  headers: {"ngrok-skip-browser-warning": "true"}
+  baseURL: 'https://cluster0.vs4cn5p.mongodb.net',
+  headers: {
+    'Content-Type': 'application/json',
+    }
 });

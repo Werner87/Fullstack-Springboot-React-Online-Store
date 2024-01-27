@@ -10,15 +10,15 @@ const Hero = ({ products = [] }) => {
            <Carousel>
             {products.map((product) =>{
                     return(
-                        <Paper>
+                        <Paper key={product.id}>
                             <div className='products-card-container'>
                                 <div className='products-card'>
                                     <div className='products-detail'>
                                         <div className='products-poster'>
-                                            <img src={product.poster} alt="" />
+                                            <img src={product.photo} alt="" />
                                         </div>
                                         <div className='products-title'>
-                                            <h4>{product.title}</h4>
+                                            <h4>{product.name}</h4>
                                         </div>
                                     </div>
                                 </div>
