@@ -6,12 +6,21 @@ import Layout from './components/Layout';
 import {Routes,Route, Router} from 'react-router-dom';
 import Home from './components/home/Home';
 import { Accordion } from '@mui/material';
-import Account from './components/account/Account';
 import Cart from './components/cart/Cart';
+import Account from './components/account/Account';
+
 
 function App() {
 
   const [users, setUsers] = useState();
+  const [cart, setCart] = useState();
+  const [products, setProducts] = useState();
+
+  useEffect(() =>{
+    getProducts();
+    getUsers();
+    getCart();
+  },[])
 
   const getUsers = async () =>{
 
@@ -26,7 +35,6 @@ function App() {
     }
   }
 
-  const [cart, setCart] = useState();
 
   const getCart = async () =>{
 
@@ -41,7 +49,6 @@ function App() {
     }
   }
 
-  const [products, setProducts] = useState();
 
   const getProducts = async () =>{
 
@@ -55,12 +62,6 @@ function App() {
       console.log(err);
     }
   }
-
-  useEffect(() =>{
-    getProducts();
-    getUsers();
-    getCart();
-  },[])
 
   return (
     <div className="App">

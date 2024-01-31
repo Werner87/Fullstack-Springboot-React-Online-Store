@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
     <Navbar />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="*" element={<App />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

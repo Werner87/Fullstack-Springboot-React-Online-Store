@@ -2,7 +2,6 @@ import React from 'react'
 import './navbar.css'
 import {Link} from 'react-router-dom'
 import { House, ShoppingCart, User } from 'phosphor-react'
-import Home from '../home/Home'
 import { motion } from 'framer-motion';
 
 export const Navbar = () => {

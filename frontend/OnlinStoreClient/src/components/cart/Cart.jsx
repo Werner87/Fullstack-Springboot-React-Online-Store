@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Cart.css';
 
 const Cart = ({ cart = [] }) => {
@@ -12,6 +12,7 @@ const Cart = ({ cart = [] }) => {
                 <ul className="cart-list">
                     {cart.map((item) => (
                         <li key={item.product_id} className="cart-item">
+                            <Cart key={item.id} item={item}/>
                             <div className="cart-item-info">
                                 <p>{item.user_id}</p>
                                 <p className="cart-item-price">{item.price}</p>
