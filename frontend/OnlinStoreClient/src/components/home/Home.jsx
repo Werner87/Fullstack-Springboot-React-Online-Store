@@ -1,10 +1,10 @@
 import React from 'react';
 import Hero from '../hero/Hero';
 
-const Home = ({ products }) => {    
+const Home = ({products}) => {    
     return(
         <div>
-            <Hero products = {products} />
+            <Hero products={products} />
         </div>
     );
 };

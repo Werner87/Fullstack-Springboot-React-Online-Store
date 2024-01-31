@@ -1,0 +1,19 @@
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 300px;
+}
+
+.user .description {
+  text-align: center;
+}

@@ -9,14 +9,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.sql.Timestamp;
 
-@Document(collection = "users")
+@Document(collection = "cart")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
+public class Cart {
     @Id
     private ObjectId id;
-    private String email;
-    private String password;
-    private String username;
+    private String user_id;
+    private String product_id;
+    private String price;
 }

@@ -1,13 +1,12 @@
 import React from 'react';
 import './Hero.css';
-import Carousel from 'react-material-ui-carousel';
-import { Paper } from '@mui/material';
 import { ShoppingCart } from 'phosphor-react';
+import { motion } from 'framer-motion';
 
 const Hero = ({ products = [] }) => {
     return (
-        <div className='shop'>
-            <div className='shopTitle'>
+            <div className='shop'>
+            <div className='sitepTitle'>
                 <h1>SmartTech Shop</h1>
             </div>
             <div className='products'>
@@ -23,7 +22,12 @@ const Hero = ({ products = [] }) => {
                                 <b> {product.price} $ </b>
                             </p>
                         </div>
-                        <button className='addToCartBtn'> <ShoppingCart/> add to cart </button>
+                        <motion.button
+                        className='addToCartBtn'
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}>
+                        <ShoppingCart /> add to cart
+                        </motion.button>
                     </div>
                 ))}
             </div>
