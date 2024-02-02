@@ -3,9 +3,8 @@ package com.example.onlineshop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,6 +16,11 @@ public class CartController {
 
     @GetMapping
     public ResponseEntity<List<Cart>> getAllCart() {
-        return new ResponseEntity<List<Cart>>(cartService.allCart(), HttpStatus.OK);
+        return new ResponseEntity<>(cartService.allCart(), HttpStatus.OK);
+    }
+    @PostMapping
+    public ResponseEntity<String> addToCart(@RequestBody Cart cart) {
+        cartService.addToCart(cart);
+        return new ResponseEntity<>("Item added to cart successfully", HttpStatus.CREATED);
     }
 }

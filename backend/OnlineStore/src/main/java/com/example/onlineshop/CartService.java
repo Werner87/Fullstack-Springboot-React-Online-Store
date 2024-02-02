@@ -13,4 +13,8 @@ public class CartService {
     public List<Cart> allCart() {
         return cartRepository.findAll();
     }
+
+    public void addToCart(Cart cart) {
+        cartRepository.save(cart);
+    }
 }

@@ -15,6 +15,6 @@ public class OnlineStore {
     @Id
     private ObjectId id;
     private String name;
-    private String price;
+    private Double price;
     private String photo;
 }
