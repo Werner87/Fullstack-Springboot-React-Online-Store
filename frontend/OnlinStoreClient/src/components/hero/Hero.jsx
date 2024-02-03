@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Hero.css';
 import { ShoppingCart } from 'phosphor-react';
 import { motion } from 'framer-motion';
@@ -16,7 +16,7 @@ const Hero = ({ products = [] }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    user_id: "1231231",
+                    user_id: "123421",
                     product_id: product.id,
                     product_name: product.name,
                     product_price: product.price,
@@ -51,7 +51,7 @@ const Hero = ({ products = [] }) => {
                                 <b> {product.name} </b>
                             </p>
                             <p>
-                                <b> {product.price} $ </b>
+                                <b className='product-price'> {product.price} $ </b>
                             </p>
                         </div>
                         

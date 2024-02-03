@@ -1,21 +1,31 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './Cart.css';
 
 const Cart = ({ cart = [] }) => {
 
+    const userCart = cart.filter(item => item.user_id === "1231231");
+
     return (
         <div className="cart-container">
-            <h2 className="cart-title">Shopping Cart</h2>
-            {cart.length === 0 ? (
+            <div className="cart-title"><h1>Shopping Cart</h1></div>
+            {userCart.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
                 <ul className="cart-list">
-                    {cart.map((item) => (
-                        <li key={item.product_id} className="cart-item">
-                            <Cart key={item.id} item={item}/>
-                            <div className="cart-item-info">
-                                <p>{item.user_id}</p>
-                                <p className="cart-item-price">{item.price}</p>
+                    
+                    {userCart.map((item) => (
+                        <li key={uuidv4()} className="cart-item">
+                            <div className="description">
+                                <p>
+                                    <img src={item.product_photo} />
+                                </p>
+                                <p className='cart-item-name'> 
+                                    {item.product_name}
+                                </p>
+                                <p className="cart-item-price">
+                                    {item.product_price} $
+                                </p>
                             </div>
                         </li>
                     ))}
