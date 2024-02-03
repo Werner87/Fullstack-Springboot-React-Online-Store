@@ -4,7 +4,7 @@ import './Cart.css';
 
 const Cart = ({ cart = [] }) => {
 
-    const userCart = cart.filter(item => item.user_id === "1231231");
+    const userCart = cart.filter(item => item.user_id === "123421");
 
     return (
         <div className="cart-container">

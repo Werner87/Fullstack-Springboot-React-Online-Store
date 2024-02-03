@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Hero.css';
 import { ShoppingCart } from 'phosphor-react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
-const Hero = ({ products = [] }) => {
+const Hero = ({ products = [], setCart}) => {
 
     const [isItemAdded, setIsItemAdded] = useState(false);
 
@@ -26,6 +25,8 @@ const Hero = ({ products = [] }) => {
             if (!response.ok) {
                 throw new Error('Failed to add item to cart');
             }
+            const newCart = await response.json()
+            setCart(oldCart => [...oldCart, newCart])         
             setIsItemAdded(true);
             setTimeout(() => {
                 setIsItemAdded(false);
@@ -33,6 +34,7 @@ const Hero = ({ products = [] }) => {
         } catch (error) {
             console.error('Error adding item to cart:', error);
         }
+        
     };
     
 

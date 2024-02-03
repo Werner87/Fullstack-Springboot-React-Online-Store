@@ -42,11 +42,12 @@
 }
 
 .cart-item-name {
-  font-size: 20px;
+  font-size: 25px;
   margin-right: 20px;
 }
 
 .cart-item-price {
+  font-size: 20px;
   font-weight: bold;
   margin-right: 50px;
 }

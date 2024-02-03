@@ -19,8 +19,8 @@ public class CartController {
         return new ResponseEntity<>(cartService.allCart(), HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<String> addToCart(@RequestBody Cart cart) {
+    public ResponseEntity<Cart> addToCart(@RequestBody Cart cart) {
         cartService.addToCart(cart);
-        return new ResponseEntity<>("Item added to cart successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>(cart, HttpStatus.CREATED);
     }
 }
