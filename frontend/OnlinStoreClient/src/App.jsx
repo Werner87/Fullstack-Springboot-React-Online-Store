@@ -3,12 +3,10 @@ import axios from 'axios';
 import api from './api/axiosConfig';
 import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
-import {Routes,Route, Router} from 'react-router-dom';
+import {Routes,Route, Router, useParams} from 'react-router-dom';
 import Home from './components/home/Home';
-import { Accordion } from '@mui/material';
 import Cart from './components/cart/Cart';
 import Account from './components/account/Account';
-
 
 function App() {
 
@@ -68,7 +66,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Layout/>}>
             <Route path="/" element={<Home products={products} setCart={setCart}/>}/>
-            <Route path="/cart" element={<Cart cart={cart}/>}/>
+            <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>}/>
             <Route path="/account" element={<Account users={users}/>}/>
           </Route>
       </Routes>

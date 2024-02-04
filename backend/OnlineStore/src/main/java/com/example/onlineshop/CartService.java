@@ -1,5 +1,6 @@
 package com.example.onlineshop;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,5 +17,13 @@ public class CartService {
 
     public void addToCart(Cart cart) {
         cartRepository.save(cart);
+    }
+
+    public void removeFromCart(ObjectId productId){
+        cartRepository.deleteById(productId);
+    }
+
+    public List<Cart> getCartItemsByUserId(String userId) {
+        return cartRepository.findAllByUserId(userId);
     }
 }
