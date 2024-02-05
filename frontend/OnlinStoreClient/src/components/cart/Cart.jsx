@@ -3,16 +3,19 @@ import './Cart.css';
 import axios from 'axios';
 import { Trash } from 'phosphor-react';
 
-const Cart = ({ cart = []}) => {
+const Cart = ({ cart = [], setCart}) => {
 
     const userCart = cart.filter(item => item.user_id === "123421");
     const totalPrice = userCart.reduce((total, item) => total + item.product_price*item.quantity, 0).toFixed(2);
-
-
-    const removeFromCart = async (product_id) => {
-        const id = `${product_id.timestamp.toString(16)}${product_id.date.toString(16)}`;
-        console.log(id)
+    
+    const loadCart = async () => {
+        const result = await axios.get("/api/cart")
+        setCart(result.data)
+    }
+    
+    const removeFromCart = async (id) => {
         await axios.delete(`/api/cart/${id}`)
+        loadCart()
     }
 
     const updateQuantity = (item, newQuantity) => {

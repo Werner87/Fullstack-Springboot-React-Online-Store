@@ -19,11 +19,7 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public void removeFromCart(ObjectId id){
+    public void removeFromCart(String id){
         cartRepository.deleteById(id);
-    }
-
-    public List<Cart> getCartItemsByUserId(String userId) {
-        return cartRepository.findAllByUserId(userId);
     }
 }

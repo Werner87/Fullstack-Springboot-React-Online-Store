@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Cart {
     @JsonProperty("product_id")
     @Id
-    private ObjectId id;
+    private String id;
     @JsonProperty("product_name")
     private String name;
     @JsonProperty("product_price")

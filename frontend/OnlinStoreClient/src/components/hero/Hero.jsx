@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Hero.css';
 import { ShoppingCart } from 'phosphor-react';
 import { motion } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 const Hero = ({ products = [], setCart}) => {
 
@@ -17,7 +18,7 @@ const Hero = ({ products = [], setCart}) => {
                 },
                 body: JSON.stringify({
                     user_id: "123421",
-                    product_id: product.id,
+                    product_id: uuidv4(),
                     product_name: product.name,
                     product_price: product.price,
                     product_photo: product.photo,

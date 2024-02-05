@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CartRepository extends MongoRepository<Cart, ObjectId> {
-    List<Cart> findAllByUserId(String userId);
+public interface CartRepository extends MongoRepository<Cart, String> {
 }

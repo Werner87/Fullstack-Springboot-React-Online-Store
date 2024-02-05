@@ -26,10 +26,8 @@ public class CartController {
         return new ResponseEntity<>(cart, HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<List<Cart>> removeFromCart(@PathVariable ObjectId id) {
+    public ResponseEntity<String> removeFromCart(@PathVariable String id) {
         cartService.removeFromCart(id);
-        String userId = "123421";
-        List<Cart> updatedCart = cartService.getCartItemsByUserId(userId);
-        return new ResponseEntity<>(updatedCart, HttpStatus.OK);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
 }
