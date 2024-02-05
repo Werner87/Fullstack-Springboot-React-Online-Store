@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 const Hero = ({ products = [], setCart}) => {
 
     const [isItemAdded, setIsItemAdded] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
     const addToCart = async (product) => {
         try {
@@ -20,6 +21,7 @@ const Hero = ({ products = [], setCart}) => {
                     product_name: product.name,
                     product_price: product.price,
                     product_photo: product.photo,
+                    quantity: quantity,
                 }),
             });
             if (!response.ok) {
@@ -56,8 +58,11 @@ const Hero = ({ products = [], setCart}) => {
                                 <b className='product-price'> {product.price} $ </b>
                             </p>
                         </div>
-                        
-                        
+                        <div className='quantity-control'>
+                            <button onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}>-</button>
+                            <input type="number" value={quantity} readOnly />
+                            <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
+                        </div>
                         <motion.button
                         className='addToCartBtn'
                         whileHover={{ scale: 1.1 }}

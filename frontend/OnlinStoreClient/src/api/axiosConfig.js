@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://cluster0.vs4cn5p.mongodb.net',
+  baseURL: 'http://localhost:8080',
   headers: {
     'Content-Type': 'application/json',
     }

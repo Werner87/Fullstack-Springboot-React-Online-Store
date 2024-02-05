@@ -24,4 +24,6 @@ public class Cart {
     private String userId;
     @JsonProperty("product_photo")
     private String photo;
+    @JsonProperty("quantity")
+    private Double quantity;
 }

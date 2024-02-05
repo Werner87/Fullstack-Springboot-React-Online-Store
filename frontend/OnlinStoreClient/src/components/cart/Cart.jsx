@@ -5,7 +5,7 @@ import { Trash } from 'phosphor-react';
 const Cart = ({ cart = []}, setCart) => {
 
     const userCart = cart.filter(item => item.user_id === "123421");
-    const totalPrice = userCart.reduce((total, item) => total + item.product_price, 0).toFixed(2);
+    const totalPrice = userCart.reduce((total, item) => total + item.product_price*item.quantity, 0).toFixed(2);
 
     const removeFromCart = async (item) => {
     try {
@@ -23,9 +23,17 @@ const Cart = ({ cart = []}, setCart) => {
         setCart(oldCart => [...oldCart, newCart])
     } catch (error) {
         console.error('Error removing item from cart:', error);
-    }
-};
+    }};
 
+    const updateQuantity = (item, newQuantity) => {
+        const updatedCart = cart.map(cartItem => {
+            if (cartItem.product_id === item.product_id) {
+                return { ...cartItem, quantity: newQuantity };
+            }
+            return cartItem;
+        });
+        setCart(updatedCart);
+    };
 
     return (
         <div className="cart-container">
@@ -47,9 +55,18 @@ const Cart = ({ cart = []}, setCart) => {
                                 <p className="cart-item-price">
                                     {item.product_price} $
                                 </p>
-                            </div>
-                            <div className="remove-icon" onClick={() => removeFromCart(item)}>
-                                <Trash size={24} color="#000" />
+                                <div className="quantity-control">
+                                    <p>
+                                        <button onClick={() => updateQuantity(item, Math.max(item.quantity - 1, 1))}>-</button>
+                                        <input type="number" value={item.quantity} readOnly />
+                                        <button onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
+                                    </p>
+                                </div>
+                                <div className="remove-icon" onClick={() => removeFromCart(item)}>
+                                <p>
+                                    <Trash size={27}/>
+                                </p>
+                                </div>
                             </div>
                         </li>
                     ))}
