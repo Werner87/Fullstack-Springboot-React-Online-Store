@@ -24,7 +24,7 @@ const Account = ({ users = [] }) => {
 
       {showLoginForm && (
         <form className='login-form'>
-          {/* Dodaj formularz logowania tutaj */}
+          {}
           <h2>Formularz logowania</h2>
           <input type='text' placeholder='Nazwa użytkownika' />
           <input type='password' placeholder='Hasło' />
@@ -34,7 +34,7 @@ const Account = ({ users = [] }) => {
 
       {showRegistrationForm && (
         <form className='registration-form'>
-          {/* Dodaj formularz rejestracji tutaj */}
+          {}
           <h2>Formularz rejestracji</h2>
           <input type='text' placeholder='Nazwa użytkownika' />
           <input type='email' placeholder='Email' />

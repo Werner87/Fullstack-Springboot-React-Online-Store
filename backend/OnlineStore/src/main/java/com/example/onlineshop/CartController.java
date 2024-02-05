@@ -25,10 +25,9 @@ public class CartController {
         cartService.addToCart(cart);
         return new ResponseEntity<>(cart, HttpStatus.CREATED);
     }
-    @GetMapping("/{idS}")
-    public ResponseEntity<List<Cart>> removeFromCart(@PathVariable String idS) {
-        ObjectId productId = new ObjectId(idS);
-        cartService.removeFromCart(productId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<List<Cart>> removeFromCart(@PathVariable ObjectId id) {
+        cartService.removeFromCart(id);
         String userId = "123421";
         List<Cart> updatedCart = cartService.getCartItemsByUserId(userId);
         return new ResponseEntity<>(updatedCart, HttpStatus.OK);

@@ -1,29 +1,19 @@
 import React from 'react';
 import './Cart.css';
+import axios from 'axios';
 import { Trash } from 'phosphor-react';
 
-const Cart = ({ cart = []}, setCart) => {
+const Cart = ({ cart = []}) => {
 
     const userCart = cart.filter(item => item.user_id === "123421");
     const totalPrice = userCart.reduce((total, item) => total + item.product_price*item.quantity, 0).toFixed(2);
 
-    const removeFromCart = async (item) => {
-    try {
-        const id = item.product_id;
-        const idS = id.toString();
 
-        const response = await fetch(`http://localhost:8080/api/cart/${idS}`, {
-            method: 'GET',
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to remove item from cart');
-        } 
-        const newCart = await response.json()
-        setCart(oldCart => [...oldCart, newCart])
-    } catch (error) {
-        console.error('Error removing item from cart:', error);
-    }};
+    const removeFromCart = async (product_id) => {
+        const id = `${product_id.timestamp.toString(16)}${product_id.date.toString(16)}`;
+        console.log(id)
+        await axios.delete(`/api/cart/${id}`)
+    }
 
     const updateQuantity = (item, newQuantity) => {
         const updatedCart = cart.map(cartItem => {
@@ -62,7 +52,7 @@ const Cart = ({ cart = []}, setCart) => {
                                         <button onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
                                     </p>
                                 </div>
-                                <div className="remove-icon" onClick={() => removeFromCart(item)}>
+                                <div className="remove-icon" onClick={() => removeFromCart(item.product_id)}>
                                 <p>
                                     <Trash size={27}/>
                                 </p>

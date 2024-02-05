@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface CartRepository extends MongoRepository<Cart, ObjectId> {
     List<Cart> findAllByUserId(String userId);
-
 }
