@@ -30,4 +30,13 @@ public class CartController {
         cartService.removeFromCart(id);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Cart> updateCart(@PathVariable String id, @RequestBody Cart cart) {
+        Cart updatedCart = cartService.updateCart(id, cart);
+        if (updatedCart != null) {
+            return new ResponseEntity<>(updatedCart, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

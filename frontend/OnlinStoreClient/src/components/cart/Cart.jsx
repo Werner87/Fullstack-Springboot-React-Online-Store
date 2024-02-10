@@ -18,7 +18,7 @@ const Cart = ({ cart = [], setCart}) => {
         loadCart()
     }
 
-    const updateQuantity = (item, newQuantity) => {
+    const updateQuantity = async (item, newQuantity) => {
         const updatedCart = cart.map(cartItem => {
             if (cartItem.product_id === item.product_id) {
                 return { ...cartItem, quantity: newQuantity };
@@ -26,6 +26,14 @@ const Cart = ({ cart = [], setCart}) => {
             return cartItem;
         });
         setCart(updatedCart);
+
+        try {
+            await axios.put(`/api/cart/${item.product_id}`, { quantity: newQuantity });
+            loadCart();
+        } catch (error) {
+            console.error("Error updating quantity:", error);
+            setCart(cart);
+        }
     };
 
     return (
